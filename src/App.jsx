@@ -9,7 +9,7 @@ export const App = () => {
   return (
     <div>
       <main className='react-calculator'>
-        <Results />
+        <Results value={"100"}/>
         <div className="numbers">
           <button>1</button>
           <button>2</button>
