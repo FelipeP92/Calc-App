@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from './Button';
+import Button from './Button/Button';
 import PropTypes from 'prop-types'
 
 
 const MathOperation = ({ onClickOperation, onClickEqual }) => (
-    <section className="math-operation">
+    <section className="math-operations">
         <Button text='+' clickHandler={onClickOperation} />
         <Button text='-' clickHandler={onClickOperation} />
         <Button text='*' clickHandler={onClickOperation} />
