@@ -1,5 +1,5 @@
 // import 
-import React from 'react';
+import React, { useState } from 'react';
 import Results from './components/Results';
 import "./App.css"
 import MathOperation from './components/MathOperation';
@@ -8,20 +8,24 @@ import Numbers from './components/Numbers';
 
 
 
+
 //generation of component
 
 export const App = () => {
 
+  const [result, setResult] = useState('');
 
-  
 
-
+    
 
   return (
     <div>
       <main className='react-calculator'>
-        <Results value={"100"} />
-        <Numbers onClickNumbers={number => console.log(number)}/>
+        <Results value={result} />
+        <Numbers onClickNumbers={number => {
+           console.log(number)
+           setResult(number)
+        }}/>
         <Functions
           onContentClear={() => console.log('clear')}
           onDelete={() => console.log('delete')}
