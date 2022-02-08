@@ -5,10 +5,10 @@ import Button from './Button/Button';
 
 //DRY dont repeat 
 
-const numbers =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+const numbers =  [7, 8, 9, 4, 5, 6, 1, 2, 3, 0]
 
 const renderButton = onClickNumbers => {
-   //<Button text='1' clickHandler={onClickNumbers} />
+  
 
    return numbers.map(number => (
     <Button key={number} text={number.toString()} clickHandler={onClickNumbers} />
