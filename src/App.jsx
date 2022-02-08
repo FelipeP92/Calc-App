@@ -1,3 +1,4 @@
+/*eslint no-eval: 0 */
 // import 
 import React, { useState } from 'react';
 import Results from './components/Results';
@@ -13,27 +14,42 @@ import Numbers from './components/Numbers';
 
 export const App = () => {
 
-  const [result, setResult] = useState('');
+  const [stack, setStack] = useState('');
 
 
-    
+
 
   return (
     <div>
       <main className='react-calculator'>
-        <Results value={result} />
+        <Results value={stack} />
         <Numbers onClickNumbers={number => {
-           console.log(number)
-           setResult(number)
-        }}/>
+          console.log(number)
+          setStack(`${stack}${number}`)
+        }} />
         <Functions
-          onContentClear={() => console.log('clear')}
-          onDelete={() => console.log('delete')}
+          onContentClear={() => {
+            console.log('clear')
+            setStack('')
+          }}
+          onDelete={() => {
+            if (stack.length > 0) {
+              console.log('delete')
+              const newStack = stack.substring(0, stack.length - 1)
+              setStack(newStack)
+            }
+          }}
         />
 
         <MathOperation
-          onClickOperation={operation => console.log('operation:', operation)}
-          onClickEqual={equal => console.log('equal:', equal)} />
+          onClickOperation={operation => {
+            console.log('operation:', operation)
+            setStack(`${stack}${operation}`)
+          }}
+          onClickEqual={equal => {
+            console.log('equal:', equal)
+            setStack(eval(stack).toString())
+          }} />
 
       </main>
 
