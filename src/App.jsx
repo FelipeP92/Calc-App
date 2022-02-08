@@ -1,6 +1,7 @@
 /*eslint no-eval: 0 */
 // import 
 import React, { useState } from 'react';
+import words from 'lodash.words'
 import Results from './components/Results';
 import "./App.css"
 import MathOperation from './components/MathOperation';
@@ -17,12 +18,17 @@ export const App = () => {
   const [stack, setStack] = useState('');
 
 
+  const items = words(stack, /[^-^+^*^/]+/g);
+  
+
+  const value = items.length > 0 ? items[items.length - 1] : 0
+
 
 
   return (
     <div>
       <main className='react-calculator'>
-        <Results value={stack} />
+        <Results value={value} />
         <Numbers onClickNumbers={number => {
           console.log(number)
           setStack(`${stack}${number}`)
